@@ -24,6 +24,8 @@ public:
 	inline vec3& operator*=(const float t) {e[0] *= t; e[1] *= t; e[2] *= t; return *this;} 
 	inline vec3& operator/=(const float t) {e[0] /= t; e[1] /= t; e[2] /= t; return *this;} 
 
+	
+
 	inline float length() const {
 		return sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]);
 	}
@@ -36,6 +38,11 @@ public:
 		e[1] *= k;
 		e[2] *= k;
 	}
+
+	inline vec3 normal_vector() const {
+		float v = 1/sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]);  
+		return vec3(e[0] * v, e[1] * v, e[2] * v); 
+	} 
 
 
 	float e[3];

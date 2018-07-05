@@ -46,10 +46,13 @@ int main() {
 	list[3] = new sphere(vec3(-1, 0, -1), 0.5, new dielectric(1.5));
 	list[4] = new sphere(vec3(-1, 0, -1), -0.25, new dielectric(1.5));
 
-	hitable *world = new hitable_list(list, 5);
+	// float R = cos(M_PI/4);
+	// list[0] = new sphere(vec3(-R, 0, -1), R, new lambertian(vec3(0, 0, 1)));
+	// list[1] = new sphere(vec3(R, 0, -1), R, new lambertian(vec3(1, 0, 1)));
 
-	camera cam;
+	hitable *world = new hitable_list(list, sizeof(list)/sizeof(hitable *));
 
+	camera cam(vec3(-2, 2, 1), vec3(0, 0, -1), vec3(0, 1, 0), 90, float(nx)/float(ny));
 
 	for (int j = ny; j >0; --j) {
 		for (int i = 0; i < nx; ++i) {
